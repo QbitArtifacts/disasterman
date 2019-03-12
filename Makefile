@@ -1,4 +1,4 @@
-DOCKER_REGISTRY := registry.hub.docker.com
+DOCKER_REGISTRY := registry-1.docker.io
 DOCKER_IMAGE := disasterman-server
 DOCKER_TAG := master
 BUILD_DIR := server
