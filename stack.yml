@@ -8,7 +8,16 @@ services:
         image: qbitartifacts/disasterman:master
         volumes:
             - backups:/backups
+        deploy:
+            placement:
+                constraints:
+                    - node.labels.purpose == backups
     agent:
         image: qbitartifacts/disasterman-agent:master
         volumes:
             - /var/lib/docker/volumes:/volumes
+        deploy:
+            mode: global
+            placement:
+                constraints:
+                    - node.labels.purpose != backups

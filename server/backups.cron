@@ -1,0 +1,15 @@
+
+################# SERVER CRON FILE ###################
+
+# Do a full backup every hour
+0 * * * * root /usr/bin/rsync -a /backups/latest /backups/hourly/$(date +%d-%m-%Y_%H)
+
+# Do a full backup every day
+0 0 * * * root /usr/bin/rsync -a /backups/latest /backups/daily/$(date +%d-%m-%Y)
+
+# Do a full backup every week
+0 0 * * 7 root /usr/bin/rsync -a /backups/latest /backups/weekly/$(date +%d-%m-%Y)
+
+# Do a full backup every month
+0 0 1 * * root /usr/bin/rsync -a /backups/latest /backups/monthly/$(date +%m-%Y)
+
