@@ -1,0 +1,14 @@
+version: '3.7'
+
+volumes:
+    backups:
+
+services:
+    disasterman:
+        image: qbitartifacts/disasterman:master
+        volumes:
+            - backups:/backups
+    agent:
+        image: qbitartifacts/disasterman-agent:master
+        volumes:
+            - /var/lib/docker/volumes:/volumes

@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+        - stable
+    machine: true
+    steps:
+      - checkout
+
+      # docker login with credentials stored in the CI
+      - run: make login DOCKER_USERNAME=$USERNAME DOCKER_PASSWORD=$PASSWORD
+
+      # build the application image
+      - run: make build DOCKER_IMAGE=disasterman DOCKER_TAG=$CIRCLE_BRANCH BUILD_DIR=server
+      - run: make build DOCKER_IMAGE=disasterman-agent DOCKER_TAG=$CIRCLE_BRANCH BUILD_DIR=agent
+
+      # push the application image to registry
+      - run: make push DOCKER_IMAGE=disasterman-server DOCKER_TAG=$CIRCLE_BRANCH
+
+      # use webhook to deploy
+      - run: make deploy WEBHOOK=$DEPLOY_WEBHOOK
