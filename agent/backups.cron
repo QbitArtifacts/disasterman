@@ -2,5 +2,5 @@
 ################# AGENT CRON FILE ###################
 
 # Do a incremental backup every minute
-* * * * * root /usr/bin/rsync -a --delete /volumes disasterman:/backups/latest/`hostname`
+* * * * * root /usr/bin/rsync -e "ssh -o StrictHostKeyChecking=no" -a --delete /volumes $SERVER:/backups/latest/`hostname`
 

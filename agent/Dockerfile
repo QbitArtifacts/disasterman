@@ -1,6 +1,12 @@
 from debian
-run apt update && apt install -y rsync cron
-copy backups.cron /etc/cron.d/disasterman
+run apt update && apt install -y rsync cron openssh-client settext-base
 
-cmd cron -f
+copy backups.cron /
+copy docker-entrypoint.sh /
+run chmod +x docker-entrypoint.sh
+
+run mkdir -p /root/.ssh
+copy agent.key /root/.ssh/id_rsa
+
+cmd ["/docker-entrypoint.sh"]
 
