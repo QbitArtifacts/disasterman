@@ -6,7 +6,7 @@ if [[ "$SERVER" == "" ]];then
 fi
 
 #Do the first copy now
-/usr/bin/rsync -e "ssh -o StrictHostKeyChecking=no" -a --delete /volumes $SERVER:/backups/latest/`hostname`
+/copy_all_volumes_except_untagged.sh
 
 envsubst < /backups.cron > /etc/cron.d/disasterman
 

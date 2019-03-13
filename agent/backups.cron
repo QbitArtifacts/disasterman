@@ -2,5 +2,5 @@
 ################# AGENT CRON FILE ###################
 
 # Do a incremental backup every minute
-*/5 * * * * root /usr/bin/rsync -e "ssh -o StrictHostKeyChecking=no" -a --delete /volumes $SERVER:/backups/latest/`hostname`
+*/5 * * * * root /copy_all_volumes_except_untagged.sh
 
