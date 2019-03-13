@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-if ! test -d /backups/latest;then
-    mkdir -p /backups/latest
-fi
+
+PERIODS="latest hourly daily weekly monthly"
+
+for period in $PERIODS;do
+    if ! test -d /backups/$period;then
+        mkdir -p /backups/$period
+    fi
+done
 
 /usr/sbin/cron -f &
 /usr/sbin/sshd -D &
