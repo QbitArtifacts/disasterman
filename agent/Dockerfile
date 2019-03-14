@@ -1,5 +1,5 @@
 from debian
-run apt update && apt install -y rsync cron openssh-client gettext-base
+run apt update && apt install -y rdiff-backup openssh-client cron gettext-base
 
 copy backups.cron /
 copy docker-entrypoint.sh /

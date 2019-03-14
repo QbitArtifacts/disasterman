@@ -5,9 +5,10 @@ if [[ "$SERVER" == "" ]];then
     export SERVER=server
 fi
 
-#Do the first copy now
+# Do the first copy now
 /copy_all_volumes_except_untagged.sh
 
+# Install cron for every minute backup
 envsubst < /backups.cron > /etc/cron.d/disasterman
 
 cron -f
