@@ -4,5 +4,5 @@ run mkdir /run/sshd
 
 copy agent.pub /root/.ssh/authorized_keys
 
-cmd ["sshd", "-D"]
+cmd ["/usr/sbin/sshd", "-D"]
 
