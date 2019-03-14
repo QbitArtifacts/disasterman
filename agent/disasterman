@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+
+OPTION = $1
+
+error(){
+    ERROR=$1
+    echo "Usage: " >&2
+
+}
+
+if [[ "$OPTION" = "" ]];
+    error "" 1
+fi
+
