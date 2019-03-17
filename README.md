@@ -19,9 +19,9 @@ docker stack deploy -f stack.yml
 # Options
 Options are passed via environment variables (all optional) and [node labels](https://docs.docker.com/engine/swarm/manage-nodes/):
 ## Node labels
-Node labelling is useful for avoid to backup the backup server inside itself, in the example configuration in `stack.yml`, the server is deployed in a node with label `purpose.main = backup` and the nodes in **every other** nodes. 
+Node labelling is useful for avoid to backup the backup server inside itself, in the example configuration in `stack.yml`, the server is deployed in a node with label `purpose = backup` and the nodes in **every other** nodes. 
 
-So the _backup server_ node must be labelled with `purpose.main = backup`.
+So the _backup server_ node must be labelled with `purpose = backup`.
 
 ## Environment VARS
 ```
