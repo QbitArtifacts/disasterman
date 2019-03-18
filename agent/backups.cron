@@ -2,5 +2,5 @@
 ################# AGENT CRON FILE ###################
 
 # Do a incremental backup every minute
-* * * * * root SERVER=$SERVER /copy_all_volumes_except_untagged.sh
+*/5 * * * * root SERVER=$SERVER /copy_all_volumes_except_untagged.sh
 
