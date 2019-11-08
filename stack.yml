@@ -8,6 +8,8 @@ networks:
 services:
     disasterman:
         image: qbitartifacts/disasterman:master
+        ports:
+            - 8080:8080
         volumes:
             - backups:/backups
         networks:
