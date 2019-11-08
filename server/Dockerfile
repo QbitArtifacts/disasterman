@@ -4,10 +4,10 @@ run pip3 install rdiffweb==1.1.0
 
 run mkdir /run/sshd
 
-copy agent.pub /root/.ssh/authorized_keys
-copy rdw.conf.dist /
+copy server/agent.pub /root/.ssh/authorized_keys
+copy server/rdw.conf.dist /
 
-copy docker-entrypoint.sh /
+copy server/docker-entrypoint.sh /
 run chmod +x /docker-entrypoint.sh
 
 cmd ["/docker-entrypoint.sh"]
