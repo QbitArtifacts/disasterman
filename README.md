@@ -24,15 +24,12 @@ Node labelling is useful for avoid to backup the backup server inside itself, in
 So the _backup server_ node must be labelled with `purpose = backup`.
 
 ## Environment VARS
-```
-# default interval is 1 minute, available X[mhd] for X minutes, hours or days
-COPY_INTERVAL: 5m 
-
-# by default doesn't make daily, weekly or monthly external copies
-DAILY_EXTERNAL_BACKUP: ssh://backups@daily.domain.net:/backups
-WEEKLY_EXTERNAL_BACKUP: ssh://backups@weekly.domain.net:/backups
-MONTHLY_EXTERNAL_BACKUP: ftp://backups:securepass@monthly.domain.net:/backups
-```
+* `HEADER_NAME` header name shown at top left of the GUI.
+* `ADMIN_PASSWORD` password for user `admin` to login.
+* `SMTP_SERVER` mail server used for notifications.
+* `SMTP_ENCRYPTION` type of authentication for the server.
+* `SMTP_USERNAME` username for the mailing user.
+* `SMTP_PASSWORD` password for the mailing user.
 
 # Backup process
 The backup process is fully automatic.
