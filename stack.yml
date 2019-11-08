@@ -2,22 +2,28 @@ version: '3.7'
 
 volumes:
     backups:
+networks:
+    backups:
 
 services:
     disasterman:
         image: qbitartifacts/disasterman:master
         volumes:
             - backups:/backups
+        networks:
+            - backups
         deploy:
             placement:
                 constraints:
-                    - node.labels.purpose == backups
+                    - node.labels.backups == server
     agent:
         image: qbitartifacts/disasterman-agent:master
         volumes:
             - /var/lib/docker/volumes:/volumes
+        networks:
+            - backups
         deploy:
             mode: global
             placement:
                 constraints:
-                    - node.labels.purpose != backups
+                    - node.labels.backups != server
