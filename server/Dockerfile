@@ -1,5 +1,5 @@
 from debian
-run apt update && apt install -y gettext-base wget sqlite3 rdiff-backup openssh-server python3-pip python3-ldap
+run apt update && apt install -y gettext-base wget curl sqlite3 rdiff-backup openssh-server python3-pip python3-ldap
 run pip3 install rdiffweb==1.1.0
 
 run mkdir /run/sshd
