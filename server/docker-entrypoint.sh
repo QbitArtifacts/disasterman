@@ -30,7 +30,7 @@ echo "OK"
 echo -n "Setting up users and repositories... "
 PASSWORD=$(echo -n "$ADMIN_PASSWORD" | sha1sum | cut -f1 -d" ")
 cat <<SQL | sqlite3 /etc/rdiffweb/rdw.db
-update users set Password='$PASSWORD', UserRoot='/volumes';
+update users set Password='$PASSWORD', UserRoot='/backups';
 SQL
 echo "OK"
 
