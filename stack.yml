@@ -2,6 +2,7 @@ version: '3.7'
 
 volumes:
     backups:
+    web:
 networks:
     backups:
 
@@ -12,6 +13,7 @@ services:
             - 8080:8080
         volumes:
             - backups:/backups
+            - web:/etc/rdiffweb
         networks:
             - backups
         deploy:
