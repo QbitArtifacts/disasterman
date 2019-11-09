@@ -33,6 +33,7 @@ cat <<SQL | sqlite3 /etc/rdiffweb/rdw.db
 update users set Password='$PASSWORD', UserRoot='/backups';
 SQL
 echo "OK"
+# Launching process to login and refresh repositories at startup
 echo -n "Updating repositories... "
 curl -s --cookie-jar cookies.txt -F "login=admin" -F "password=$ADMIN_PASSWORD" http://127.0.0.1:8080/login > /dev/null
 curl -s --cookie cookies.txt -F "action=update_repos" http://127.0.0.1:8080/prefs/general/ > /dev/null
