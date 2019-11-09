@@ -34,8 +34,8 @@ update users set Password='$PASSWORD', UserRoot='/backups';
 SQL
 echo "OK"
 echo -n "Updating repositories... "
-curl --cookie-jar cookies.txt -F "login=admin" -F "password=$ADMIN_PASSWORD" http://127.0.0.1:8080/login
-curl --cookie cookies.txt -F "action=update_repos" http://127.0.0.1:8080/prefs/general/
+curl -s --cookie-jar cookies.txt -F "login=admin" -F "password=$ADMIN_PASSWORD" http://127.0.0.1:8080/login > /dev/null
+curl -s --cookie cookies.txt -F "action=update_repos" http://127.0.0.1:8080/prefs/general/ > /dev/null
 echo "OK"
 
 echo "ALL DONE"
