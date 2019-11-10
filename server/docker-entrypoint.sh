@@ -23,26 +23,21 @@ echo -n "Starting GUI server..."
 rdiffweb > /dev/null 2>&1 &
 echo "OK"
 
-echo -n "Waiting for the server to boot... "
+echo -n "Waiting for the server to be online... "
 sleep 2
 echo "OK"
 
 echo -n "Setting up users and repositories... "
-if ! test -f /etc/rdiffweb/rdw.db;then
-  PASSWORD=$(echo -n "$ADMIN_PASSWORD" | sha1sum | cut -f1 -d" ")
-  cat <<SQL | sqlite3 /etc/rdiffweb/rdw.db
-  update users set Password='$PASSWORD', UserRoot='/backups';
+PASSWORD=$(echo -n "$ADMIN_PASSWORD" | sha1sum | cut -f1 -d" ")
+cat <<SQL | sqlite3 /etc/rdiffweb/rdw.db
+update users set Password='$PASSWORD', UserRoot='/backups';
 SQL
-  echo "OK"
-  # Launching process to login and refresh repositories at startup
-  echo -n "Updating repositories... "
-  curl -s --cookie-jar cookies.txt -F "login=admin" -F "password=$ADMIN_PASSWORD" http://127.0.0.1:8080/login > /dev/null
-  curl -s --cookie cookies.txt -F "action=update_repos" http://127.0.0.1:8080/prefs/general/ > /dev/null
-  echo "OK"
-else
-  echo
-  echo "Skipping... users and repositories already setup"
-fi
+echo "OK"
+# Launching process to login and refresh repositories at startup
+echo -n "Updating repositories... "
+curl -s --cookie-jar cookies.txt -F "login=admin" -F "password=$ADMIN_PASSWORD" http://127.0.0.1:8080/login > /dev/null
+curl -s --cookie cookies.txt -F "action=update_repos" http://127.0.0.1:8080/prefs/general/ > /dev/null
+echo "OK"
 
 echo "ALL DONE"
 
