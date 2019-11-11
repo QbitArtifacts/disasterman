@@ -32,6 +32,7 @@ services:
         environment:
             # scheduled everyday at 4:00AM
             - CRON_SCHEDULE=0 4 * * *
+            - SERVER=disasterman
         volumes:
             - /var/lib/docker/volumes:/volumes
         networks:

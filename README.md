@@ -47,6 +47,7 @@ So the _backup server_ node must be labelled with `backups: server`.
 ### Agent
 * `CRON_SCHEDULE` cron-like schedule for node backups,
 default is `*/5 * * * *` (every 5 minutes).
+
 ### Server
 * `HEADER_NAME` header name shown at top left of the UI.
 * `ADMIN_PASSWORD` password for user `admin` to login.
