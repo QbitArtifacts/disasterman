@@ -9,6 +9,13 @@ networks:
 services:
     disasterman:
         image: qbitartifacts/disasterman:master
+        environment:
+            - HEADER_NAME=DisasterMan
+            - ADMIN_PASSWORD=admin123
+            #- SMTP_SERVER=smtp.gmail.com
+            #- SMTP_ENCRYPTION=starttls
+            #- SMTP_USERNAME=myuser@example.com
+            #- SMTP_PASSWORD=mypassword
         ports:
             - 8080:8080
         volumes:
@@ -22,6 +29,9 @@ services:
                     - node.labels.backups == server
     agent:
         image: qbitartifacts/disasterman-agent:master
+        environment:
+            # scheduled everyday at 4:00AM
+            - CRON_SCHEDULE=0 4 * * *
         volumes:
             - /var/lib/docker/volumes:/volumes
         networks:

@@ -44,6 +44,10 @@ constraint.
 So the _backup server_ node must be labelled with `backups: server`.
 
 ## Environment VARS
+### Agent
+* `CRON_SCHEDULE` cron-like schedule for node backups,
+default is `*/5 * * * *` (every 5 minutes).
+### Server
 * `HEADER_NAME` header name shown at top left of the UI.
 * `ADMIN_PASSWORD` password for user `admin` to login.
 * `SMTP_SERVER` mail server used for notifications.
